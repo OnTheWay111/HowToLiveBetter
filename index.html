@@ -181,6 +181,11 @@ html.dark .switch .sun{display:none} html.dark .switch .moon{display:block}
 #tip-box button:hover{color:var(--t1);background:var(--bg-mute)}
 .hint p{margin:4px 0}
 .backdrop{display:none}
+.menu-done{display:none}
+@media (max-width:960px){
+  .menu-done{display:block;position:sticky;bottom:8px;width:100%;margin:18px 0 0;padding:12px 16px;border:0;border-radius:12px;background:var(--brand-1);color:#fff;font:inherit;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer}
+  html.dark .menu-done{color:#1b1b1f}
+}
 
 /* content */
 .content{padding:calc(var(--nav-h) + 40px) 48px 128px calc(var(--side-w) + 48px)}
@@ -332,6 +337,21 @@ abbr.term:hover{border-bottom-color:var(--brand-1);color:var(--brand-1)}
   .dm-doc table{min-width:560px}
   .dm-h a,.dm-h button{padding:6px 12px}
 }
+@media (max-width:960px){
+  .chip{min-height:34px;padding:6px 12px;line-height:20px}
+  .toggle{min-height:34px;padding:6px 0}
+  .src summary{min-height:36px;padding:8px 0}
+  .tip-open{min-height:32px;padding:6px 0}
+  .switch::after{content:"";position:absolute;inset:-9px -5px;border-radius:16px}
+}
+@media (hover:none){
+  .card-h .anchor{display:none}
+  button:active,a:active,summary:active,.chip:active,.toggle:active{filter:brightness(.95)}
+  button,a,summary,label,.chip{-webkit-tap-highlight-color:rgba(52,81,178,.14)}
+}
+@media (max-width:720px){
+  .search input{font-size:16px}
+}
 @media (max-width:480px){
   .nav-in{padding:0 10px;gap:8px}
   .nav-r{gap:4px}
@@ -340,11 +360,13 @@ abbr.term:hover{border-bottom-color:var(--brand-1);color:var(--brand-1)}
   .switch{margin-left:0}
   .content{padding-left:12px;padding-right:12px}
   .doc-head h1{font-size:22px;line-height:30px}
+  /* 点进搜索框时把右侧图标让出来，输入区能宽一截；失焦自动回来 */
+  .nav-in:focus-within .nav-r{display:none}
 }
 @media (max-width:360px){
   .nav-in{padding:0 8px;gap:6px}
   .icon-btn{width:34px;height:34px}
-  .search input{padding:0 10px 0 30px;font-size:13px}
+  .search input{padding:0 10px 0 30px;font-size:16px}
   .search svg{left:9px;width:16px;height:16px}
   .search kbd{display:none}
 }
@@ -410,11 +432,11 @@ abbr.term:hover{border-bottom-color:var(--brand-1);color:var(--brand-1)}
 
 <header class="nav">
   <div class="nav-in">
-    <button class="icon-btn menu-btn" id="menu" aria-label="打开筛选" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg></button>
+    <button class="icon-btn menu-btn" id="menu" aria-label="打开筛选" aria-expanded="false" aria-controls="sidebar"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg></button>
     <a class="title" href="./" aria-label="高性价比人生指南，回检索页"><span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>高性价比人生指南</span></a>
     <label class="search">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
-      <input id="q" type="search" placeholder="搜索条目" autocomplete="off" aria-label="搜索条目">
+      <input id="q" type="search" placeholder="搜索条目" autocomplete="off" aria-label="搜索条目" enterkeyhint="search" autocapitalize="off" autocorrect="off" spellcheck="false">
       <kbd>/</kbd>
     </label>
     <div class="nav-r">
@@ -521,6 +543,7 @@ abbr.term:hover{border-bottom-color:var(--brand-1);color:var(--brand-1)}
     <a href="https://4.mcyyy.com" target="_blank" rel="noopener"><img src="ads/mcyyy-side.webp" alt="永恒世界 Minecraft 服务器，游戏地址 1.mcyyy.com" width="624" height="312" loading="lazy"></a>
     <button type="button" class="tip-open" id="tip-open">觉得有用？请作者喝杯咖啡</button>
   </div>
+  <button type="button" class="menu-done" id="menu-done">查看结果</button>
 </aside>
 
 <main class="content">
@@ -1291,6 +1314,8 @@ function apply(){
   for (const [n, sub] of TOC_SEC){ const count = tocSec[n]||0, none = count === 0; sub.previousElementSibling.querySelector('i').textContent = count; if (sub.lastElementChild.hidden === none) sub.lastElementChild.hidden = !none; }
   document.getElementById('f-sec').querySelector('.all i').textContent = matched;
   document.getElementById('cnt').textContent = shown;
+  const doneBtn = document.getElementById('menu-done');
+  if (doneBtn) doneBtn.textContent = `查看 ${shown} 条结果`;
   document.getElementById('empty').hidden = shown !== 0;
   syncControls(); writeUrl(); tocSync(spyLast);
   PERF.log('apply', t0, `命中 ${shown} 条，重渲染 ${rerender} 张`);
@@ -1309,11 +1334,20 @@ function reportSearch(){
 }
 function wire(){
   const sb = document.getElementById('sidebar'), bd = document.getElementById('backdrop'), mb = document.getElementById('menu');
-  const setMenu = (on) => { sb.classList.toggle('open', on); bd.classList.toggle('on', on); mb.setAttribute('aria-expanded', String(on)); };
+  const setMenu = (on) => {
+    sb.classList.toggle('open', on);
+    bd.classList.toggle('on', on);
+    mb.setAttribute('aria-expanded', String(on));
+    updateBodyLock();
+  };
+  // 横屏或平板转到桌面宽度时菜单按钮消失，别把 body 的滚动锁留在那里
+  const desktopMQ = matchMedia('(min-width:961px)');
+  if (desktopMQ.addEventListener) desktopMQ.addEventListener('change', () => { if (desktopMQ.matches) setMenu(false); });
   // 筛选变了就顺手让 spy 重算一次 hash：writeUrl 是无条件把旧 hash 拼回去的，
   // 而滚回顶部时页面若本来就在顶部不会触发 scroll，hash 会僵在一个已经被筛掉的
   // 条目上，拼出 ?sec=8#e-11-1 这种自相矛盾的地址。
-  const toTop = () => { setMenu(false); scrollTo({ top: 0 }); spy(); };
+  const toTop = () => { scrollTo({ top: 0 }); spy(); };
+  const closeAndTop = () => { setMenu(false); toTop(); };
   document.querySelectorAll('[data-dim]').forEach(g => g.addEventListener('click', ev => {
     const b = ev.target.closest('[data-v]'); if (!b) return;
     const dim = g.dataset.dim, v = b.dataset.v, set = state[dim];
@@ -1337,7 +1371,8 @@ function wire(){
     } else {
       set.has(v) ? set.delete(v) : set.add(v);
     }
-    apply(); toTop();
+    apply();
+    if (dim === 'sec') closeAndTop(); else toTop();
   }));
   // 条目目录：点了就地滚过去，手机上先收起抽屉
   document.getElementById('f-sec').addEventListener('click', ev => {
@@ -1362,6 +1397,7 @@ function wire(){
   });
   document.getElementById('reset').addEventListener('click', reset);
   document.getElementById('reset2').addEventListener('click', reset);
+  document.getElementById('menu-done').addEventListener('click', closeAndTop);
   document.addEventListener('keydown', e => {
     if (!DM.mask.hidden || !TIP.hidden) return;
     if (e.key === '/' && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); document.getElementById('q').focus(); }
@@ -1534,18 +1570,24 @@ DM.doc.addEventListener('scroll', () => {
   if (dmSpyTick) return; dmSpyTick = true;
   requestAnimationFrame(() => { dmSpyTick = false; dmSpy(); });
 });
+function updateBodyLock(){
+  const sideOpen = document.getElementById('sidebar')?.classList.contains('open');
+  const docOpen = !DM.mask.hidden;
+  const tipOpen = !TIP.hidden;
+  document.body.style.overflow = (sideOpen || docOpen || tipOpen) ? 'hidden' : '';
+}
 function dmClose(){
   if (DM.mask.hidden) return;
   DM.mask.hidden = true;
   POP.hidden = true;
-  document.body.style.overflow = '';
+  updateBodyLock();
   DM.lastFocus?.focus?.({ preventScroll: true });   // 不然「跳过去」刚滚到目标，又被拽回原来那个链接
   DM.lastFocus = null;
 }
 async function dmOpen(path, from){
   DM.lastFocus = from || null;
   DM.mask.hidden = false;
-  document.body.style.overflow = 'hidden';
+  updateBodyLock();
   DM.gh.href = dmHref(path);
   DM.toc.textContent = ''; DM.heads = [];
   DM.title.textContent = decodeURIComponent(path.replace(/^docs\//, '').replace(/\.md$/, ''));
@@ -1607,10 +1649,12 @@ const TIP = document.getElementById('tip-mask');
 function tipClose(){
   if (TIP.hidden) return;
   TIP.hidden = true;
+  updateBodyLock();
   document.getElementById('tip-open').focus();
 }
 document.getElementById('tip-open').addEventListener('click', () => {
   TIP.hidden = false;
+  updateBodyLock();
   document.getElementById('tip-x').focus();
   if (window.gtag) gtag('event', 'tip_open');
 });

@@ -453,6 +453,20 @@ dialog.modal:not([open]){display:none}
   .cite.num::after{content:"";position:absolute;inset:-8px -6px}
 }
 
+/* 手机上：输入框 16px 起，避免 iOS 聚焦时自动放大整页；按钮给足手指点击高度 */
+@media (max-width:720px){
+  .composer textarea,.clarify textarea,label>input,label>select,label>textarea,.key-line input,.model-line select{font-size:16px}
+  .nav .hbtn{min-height:34px;padding:6px 6px;display:inline-flex;align-items:center}
+  .status-btn{min-height:34px;display:inline-flex;align-items:center;padding:4px 9px}
+  .examples button,.chip{min-height:34px;padding:6px 12px}
+  .mini{min-height:32px;display:inline-flex;align-items:center;justify-content:center;padding:0 12px}
+  .modal-x{min-height:34px;display:inline-flex;align-items:center;padding:5px 12px}
+  .process>summary{min-height:34px}
+  .decision-actions .btn{min-height:40px;line-height:40px}
+  .hist-x{min-height:32px;padding:6px 10px}
+  button,a,summary,label,.chip{touch-action:manipulation}
+  .nav .hide-sm{display:none}
+}
 /* 窄屏：先把页头压到不换行、不挤压，280px 的外屏也要能用 */
 @media (max-width:420px){
   .nav{padding:0 8px;gap:4px}
@@ -470,6 +484,33 @@ dialog.modal:not([open]){display:none}
 @media (max-width:340px){
   .nav .hbtn{padding:4px 3px;font-size:11.5px}
   .status-btn{padding:3px 6px}
+}
+/* 280px 外屏再挤一点：书名只留一个返回箭头，文字留给 aria-label */
+@media (max-width:300px){
+  .nav{padding:0 6px;gap:2px}
+  .nav .title-short{font-size:0}
+  .nav .title-short::before{content:"←";font-size:15px}
+  .status-btn{padding:3px 5px}
+}
+
+/* 决策打分板在手机上改成按因素堆叠的卡片，不再横向滚动看表格 */
+@media (max-width:720px){
+  .decision-matrix-wrap{overflow:visible;padding:0 12px}
+  .decision-matrix{min-width:0;width:100%;font-size:12.5px}
+  .decision-matrix thead{display:none}
+  .decision-matrix tbody,.decision-matrix tr,.decision-matrix td{display:block;width:auto}
+  .decision-matrix tr{border:1px solid var(--divider);border-radius:10px;margin:10px 0;background:var(--bg);overflow:hidden}
+  .decision-matrix td{border-top:1px solid var(--divider);padding:9px 10px}
+  .decision-matrix td:first-child{border-top:0;background:var(--bg-soft);padding:10px}
+  .decision-matrix td[data-option]{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .decision-matrix td[data-option]::before{content:attr(data-option);min-width:4.2em;font-size:12px;font-weight:600;color:var(--t1)}
+  .decision-state{margin-left:auto}
+  .decision-state button,.decision-imp button{min-height:32px;font-size:11.5px;line-height:18px;padding:6px 8px}
+  .decision-actions{position:sticky;bottom:0;background:var(--bg-soft);z-index:2}
+}
+@media (hover:none){
+  button:active,a:active,summary:active,.chip:active,.mini:active,.hbtn:active{filter:brightness(.95)}
+  button,a,summary,label,.chip{-webkit-tap-highlight-color:rgba(52,81,178,.14)}
 }
 </style>
 </head>
@@ -511,7 +552,7 @@ dialog.modal:not([open]){display:none}
     </div>
     <form class="composer" id="composer">
       <div class="composer-box">
-        <textarea id="q" rows="1" placeholder="问一件具体的事，比如：替朋友担保签不签 / 45 岁要不要做胃镜 / 被网暴了第一步做什么"></textarea>
+        <textarea id="q" rows="1" enterkeyhint="send" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="问一件具体的事，比如：替朋友担保签不签 / 45 岁要不要做胃镜 / 被网暴了第一步做什么"></textarea>
         <div class="composer-row">
           <label class="check"><input type="checkbox" id="retrieve-only"> 只检索不生成</label>
           <div class="composer-btns">
@@ -1165,6 +1206,8 @@ function wireComposer() {
     const q = els.q.value.trim();
     if (!q || sending) return;
     ask(q);
+    // 手机上发完就收起键盘，把整块回答让出来；桌面端保持输入框焦点方便追问
+    if (window.matchMedia('(max-width:720px)').matches) els.q.blur();
   });
   els.q.addEventListener('keydown', e => {
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
@@ -1185,7 +1228,7 @@ function setSending(on) {
   els.stop.hidden = !on;
   els.q.disabled = on;
   if (els.historyBtn) els.historyBtn.disabled = on;
-  if (!on) els.q.focus();
+  if (!on && !window.matchMedia('(max-width:720px)').matches) els.q.focus();
 }
 function showSafety(kinds) {
   if (!kinds || !kinds.length) { els.safety.hidden = true; els.safety.innerHTML = ''; return; }
@@ -1451,6 +1494,7 @@ function renderDecisionBoard(msg, decision, ctx) {
     tr.appendChild(factor);
     for (const o of decision.options) {
       const td = document.createElement('td');
+      td.dataset.option = o.label;
       const a = assessmentOf(o.id, criterion.id);
       const seg = document.createElement('div');
       seg.className = 'decision-state';

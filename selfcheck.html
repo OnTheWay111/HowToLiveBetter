@@ -122,6 +122,16 @@ html.dark .btn{color:#1b1b1f}
   .seg{align-self:flex-start}
   .sum{grid-template-columns:repeat(2,1fr)}
   .hbar{grid-template-columns:7.5em 1fr 3.8em;gap:8px}
+  /* 输入框 16px 起，iOS 聚焦时不会把整页放大 */
+  .profile-age,.copy-tools textarea{font-size:16px}
+  .seg button{min-height:36px;padding:6px 13px}
+  .mods button{min-height:34px;padding:6px 14px}
+  .bar .btn{min-height:40px;line-height:40px}
+  button,.seg button,.mods button{touch-action:manipulation}
+}
+@media (hover:none){
+  button:active,.seg button:active,.mods button:active,.chip:active{filter:brightness(.95)}
+  button,a,label,.seg button,.mods button{-webkit-tap-highlight-color:rgba(52,81,178,.14)}
 }
 </style>
 </head>
