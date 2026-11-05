@@ -85,6 +85,7 @@ GitHub 登录本身解决不了这个问题：OAuth 的 client secret 不能放�
 ## 界面结构
 
 - 整页是「聊天优先」的布局：页头只放书名、Key 状态、我的情况、历史、新对话、设置；设置、我的情况和历史都是弹窗，不再把提问输入框挤到首屏下面。左侧书名链回检索页，不再单放一个「回检索页」按钮。
+- 窄屏和折叠屏：280px 的外屏起可用，页头压成「← 指南 + Key + 历史 / 新对话 / 设置」；弹窗在 ≤720px 全屏；引用编号的点击热区在手机上放大；软键盘弹起时聊天区跟着可视区缩（`visualViewport`），输入框不会被键盘盖住。检索页和自查页的页头、卡片、长文表格也各有一套窄屏规则。移动端检查跑 `node tools/mobile-check.mjs`。
 - 空状态只放说明、示例问题、最近问过的对话和输入框；发出第一条后空状态收起，对话区独立滚动，输入框固定在底部、不覆盖回答。
 - 页头「历史」打开最近对话列表；空状态里也有一块「最近问过」。对话在每轮结束时写进 `localStorage`，最多 5 个，开过的那个会标「当前对话」。
 - 回答是卡片；`structureAnswer()` 按 h4 分节，`cleanActionItems()` 把「**动作**：说明」拆成标题和正文块，行动项带编号。
@@ -177,6 +178,13 @@ python -m http.server 8000
 # 打开 http://localhost:8000/ask.html
 ```
 
+移动端适配检查（需要 Chrome；覆盖 280 / 320 / 360 / 390 / 412 / 717 / 844 / 1024 八种尺寸，含弹窗、侧栏和长文，截图在 `/tmp/mobile-check-*.png`）：
+
+```bash
+node --experimental-websocket tools/mobile-check.mjs   # Node 20
+node tools/mobile-check.mjs                            # Node 22+
+```
+
 ### 不花 Key 的本地联调
 
 `tools/ask/mock-server.mjs` 同时做静态服务器和假的 OpenAI 接口，会把提示词里的条目拼成一段带引用的回答，用 SSE 流式吐回来：
@@ -230,6 +238,7 @@ CI 里是 `book.yml` 的「问答检索评测」job。想连真实模型跑完�
 | `tools/ask/check-decision.mjs` | 决策板四态、未知排除、排名和敏感性单测 |
 | `tools/ask/mock-server.mjs` | 本地假模型 + 静态服务器 |
 | `tools/ask/smoke.mjs` | 无头 Chrome 冒烟测试 |
+| `tools/mobile-check.mjs` | 无头 Chrome 移动端适配检查（index / ask / selfcheck） |
 
 ## 维护注意
 

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
 <title>问这本书 · 高性价比人生指南</title>
 <meta name="description" content="按《高性价比人生指南》的建议回答你的具体问题：先查条目，再按书里的算账方式回答，每条注明第几节第几条。支持自己配置 DeepSeek、OpenAI 等 API Key；不配置也能用检索模式。">
 <link rel="canonical" href="https://eternity4719.github.io/HowToLiveBetter/ask.html">
@@ -33,7 +33,7 @@ html.dark{
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--t1);font:15px/1.75 var(--font);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--t1);font:15px/1.75 var(--font);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
 a{color:var(--brand-1);text-decoration:none}
 a:hover{color:var(--brand-2);text-decoration:underline;text-underline-offset:2px}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
@@ -191,7 +191,10 @@ html,body{height:100%}
 body{overflow:hidden}
 .nav{height:56px;min-height:56px;flex-wrap:nowrap;gap:8px;flex:none}
 .nav .title{white-space:nowrap}
-.status-btn{border:1px solid var(--divider);border-radius:16px;padding:3px 10px;font-size:12.5px;font-weight:600;color:var(--t2);background:var(--bg-soft);white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+.status-btn{border:1px solid var(--divider);border-radius:16px;padding:3px 10px;font-size:12.5px;font-weight:600;color:var(--t2);background:var(--bg-soft);white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis;flex:none}
+.nav .title-full{display:inline}
+.nav .title-short{display:none}
+.status-btn .k-short{display:none}
 .status-btn[data-state="off"]{color:var(--yellow-1);border-color:var(--yellow-1);background:var(--yellow-soft)}
 .status-btn[data-state="on"]{color:var(--green-1);border-color:var(--green-1);background:var(--green-soft)}
 .status-btn:hover{text-decoration:none;filter:brightness(.98)}
@@ -442,18 +445,40 @@ dialog.modal:not([open]){display:none}
   .composer textarea{min-height:44px;font-size:15px}
   .composer-hint{display:none}
   .src-title{min-width:0;font-size:13px;flex-basis:100%}
-  .modal{width:100%;max-width:none;height:100%;max-height:none;border-radius:0;margin:0}
+  dialog.modal{width:100%;max-width:none;height:100dvh;max-height:100dvh;border-radius:0;margin:0}
   .modal-head{border-radius:0}
   .modal-body .row,.modal-body .row.three{grid-template-columns:1fr}
+  /* 手机上把引用编号的点击热区做大，别只点得中一两个字 */
+  .cite.num{position:relative}
+  .cite.num::after{content:"";position:absolute;inset:-8px -6px}
+}
+
+/* 窄屏：先把页头压到不换行、不挤压，280px 的外屏也要能用 */
+@media (max-width:420px){
+  .nav{padding:0 8px;gap:4px}
+  .nav .title{font-size:14px}
+  .nav .title-full{display:none}
+  .nav .title-short{display:inline}
+  .nav .hbtn{font-size:12px;padding:4px 4px}
+  .status-btn{max-width:none;padding:3px 8px;font-size:11.5px}
+  .status-btn .k-full{display:none}
+  .status-btn .k-short{display:inline}
+  .key-line{flex-wrap:wrap}
+  .key-line input{flex:1 1 100%;min-width:0}
+  .key-line .mini{flex:1 1 auto}
+}
+@media (max-width:340px){
+  .nav .hbtn{padding:4px 3px;font-size:11.5px}
+  .status-btn{padding:3px 6px}
 }
 </style>
 </head>
 <body>
 <header class="nav">
-  <a class="title" href="./">高性价比人生指南</a>
+  <a class="title" href="./" aria-label="回检索页：高性价比人生指南"><span class="title-full">高性价比人生指南</span><span class="title-short">← 指南</span></a>
   <span class="page">问这本书</span>
   <span class="sp"></span>
-  <button type="button" class="status-btn" id="key-status" data-state="off">未配置 Key</button>
+  <button type="button" class="status-btn" id="key-status" data-state="off"><span class="k-full">未配置 Key</span><span class="k-short">Key</span></button>
   <button type="button" class="hbtn hide-sm" id="profile-btn">我的情况</button>
   <button type="button" class="hbtn" id="history-btn" title="最近 5 个对话，只存在浏览器里">历史</button>
   <button type="button" class="hbtn" id="new-chat">新对话</button>
@@ -908,7 +933,8 @@ function updateCfgState() {
   els.cfgState.textContent = has ? `已配置 ${label} · ${model}` : '未配置 API Key（可用检索模式）';
   if (els.keyStatus) {
     els.keyStatus.dataset.state = has ? 'on' : 'off';
-    els.keyStatus.textContent = has ? (els.provider.value === 'custom' ? '已配置' : `${label} 已配置`) : '未配置 Key';
+    const full = has ? (els.provider.value === 'custom' ? '已配置' : `${label} 已配置`) : '未配置 Key';
+    els.keyStatus.innerHTML = `<span class="k-full">${esc(full)}</span><span class="k-short">Key</span>`;
     els.keyStatus.title = has ? `当前模型：${model}。点这里换 Key 或模型。` : '没有配置 API Key，点这里填写；不填也能用检索模式。';
   }
   if (els.keyStoreState) {
@@ -2759,6 +2785,28 @@ function runDevHook() {
   const q = p.get('q');
   if (q) setTimeout(() => ask(q), 150);
 }
+</script>
+<script>
+/* 软键盘弹出、浏览器工具栏伸缩时，可视区会变矮；把聊天区跟着缩，输入框才不会被键盘盖住。 */
+(function () {
+  var app = document.querySelector('.chat-app');
+  var nav = document.querySelector('.nav');
+  if (!app || !nav || !window.visualViewport) return;
+  var pending = 0;
+  function sync() {
+    pending = 0;
+    var h = window.visualViewport.height;
+    if (h < 200) return; // 键盘动画中的极端值先忽略，等下一帧
+    var next = Math.max(240, h - nav.offsetHeight) + 'px';
+    if (app.style.height !== next) app.style.height = next;
+  }
+  function queue() { if (!pending) pending = requestAnimationFrame(sync); }
+  window.visualViewport.addEventListener('resize', queue);
+  window.visualViewport.addEventListener('scroll', queue);
+  window.addEventListener('resize', queue);
+  window.addEventListener('orientationchange', queue);
+  sync();
+})();
 </script>
 </body>
 </html>
