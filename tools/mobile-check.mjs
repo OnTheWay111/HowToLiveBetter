@@ -1,6 +1,7 @@
-// 移动端适配检查：无头 Chrome 在常见手机、全面屏、折叠屏、平板和横屏尺寸下打开
+// 移动端适配与交互检查：无头 Chrome 在常见手机、全面屏、折叠屏、平板和横屏尺寸下打开
 // index.html / ask.html / selfcheck.html，检查横向溢出、页头被挤爆、输入框被顶出屏幕、
-// 弹窗和侧栏是否还在可视区内，并截图到 /tmp/mobile-check-*.png。
+// 触控目标大小、输入框字号（iOS 自动放大）、只在 hover 才出现的操作、弹窗/抽屉滚动锁，
+// 以及筛选、决策打分板、自查题这些关键点击流程，并截图到 /tmp/mobile-check-*.png。
 //
 //   node tools/mobile-check.mjs               # Node 22+ 直接跑
 //   node --experimental-websocket tools/mobile-check.mjs   # Node 20
