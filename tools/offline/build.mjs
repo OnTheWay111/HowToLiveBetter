@@ -45,9 +45,11 @@ if (/googletagmanager|google-analytics/.test(html)) throw new Error('剥掉标�
 must('href="README.md"', ' README.md 链接');
 must('href="book/"', ' book/ 链接');
 must('href="selfcheck.html"', ' 自查页链接');
+must('href="ask.html"', ' 问答页链接');
 html = html
   .replaceAll('href="README.md"', `href="${REPO}/blob/main/README.md"`)
   .replaceAll('href="selfcheck.html"', `href="${SITE}selfcheck.html"`)
+  .replaceAll('href="ask.html"', `href="${SITE}ask.html"`)
   .replaceAll('href="book/"', `href="${REPO}/tree/main/book"`)
   .replaceAll('<a class="title" href="./"', `<a class="title" href="${SITE}"`);
 

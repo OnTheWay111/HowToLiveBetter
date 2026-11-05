@@ -12,7 +12,9 @@ on:
     paths:
       - README.md
       - index.html
+      - ask.html
       - selfcheck.html
+      - ask/**
       - og.png
       - ads/**
       - book/**
@@ -23,7 +25,9 @@ on:
     paths:
       - README.md
       - index.html
+      - ask.html
       - selfcheck.html
+      - ask/**
       - og.png
       - ads/**
       - book/**
@@ -106,6 +110,22 @@ jobs:
         with:
           node-version: 22
       - run: node tools/check-selfcheck.mjs
+
+  # 问答检索评测：ask.html 先检索条目再交给模型，检索质量就是回答质量的地基。
+  # 先跑覆盖判断（partial/none/auto 和提示词注入），再跑 41 道检索题。
+  # 题里有书内、急症、自杀、法律、个人情况、部分覆盖和书外问题，零依赖、几秒钟。
+  ask:
+    name: 问答检索与覆盖判断
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/ask/check-catalog.mjs
+      - run: node tools/ask/check-decision.mjs
+      - run: node tools/ask/check-coverage.mjs
+      - run: node tools/ask/eval.mjs --check
 
   build:
     runs-on: ubuntu-latest

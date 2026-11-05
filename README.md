@@ -20,7 +20,9 @@
 [![许可](https://img.shields.io/badge/%E8%AE%B8%E5%8F%AF-CC%20BY%204.0-565a5f?style=flat-square)](#许可)
 [![Claude Code 协助编写](https://img.shields.io/badge/Claude%20Code-%E5%8D%8F%E5%8A%A9%E7%BC%96%E5%86%99-D97757?style=flat-square&logo=claude&logoColor=white)](https://claude.com/claude-code)
 
-### [打开在线检索页](https://eternity4719.github.io/HowToLiveBetter/) · [让 AI 照书回答（skill）](skills/life-decision-guide/README.md)
+### [打开在线检索页](https://eternity4719.github.io/HowToLiveBetter/) · [网页版 AI 问答](https://eternity4719.github.io/HowToLiveBetter/ask.html) · [让 AI 照书回答（skill）](skills/life-decision-guide/README.md)
+
+**网页版问答**在 [ask.html](https://eternity4719.github.io/HowToLiveBetter/ask.html)：自己填 DeepSeek、OpenAI 之类的 API Key，它会先查书里的条目再回答，并注明出自第几节第几条；回答按结论、先做、别做、书里没写分块，来源分成「正文引用」和「其他检索」；结论下面还有「依据速览」，数字和结论直接从原文取，点「查看原文」能看到整条原文。问题太宽泛时会先问几个关键情况；需要权衡的选择会进入决策打分板，按「有好处 / 有坏处 / 没有影响 / 不知道」打分，再按你标的重要性算净支持，也可以跳过直接回答。书里没有当地数据的问题（比如搬去某个城市）会先说明不能判断，再拆成可以核实的几笔账，不硬套条目。不填 Key 也能用检索模式。问过的对话只存在你自己的浏览器里，最多留最近 5 个，刷新不丢，点页头「历史」能重新打开。Key 和对话都不经过本站服务器，页面也没有内置 Key。
 
 AI 助手 skill 支持 Claude Code 和 Codex。装上后直接问「替朋友担保签不签」，它先查书里的条目再回答，并注明出自第几节第几条。
 
@@ -38,6 +40,11 @@ AI 助手 skill 支持 Claude Code 和 Codex。装上后直接问「替朋友担
 <tr><td align="right"><b>自查</b></td><td align="left">
 
 [生活自查](https://eternity4719.github.io/HowToLiveBetter/selfcheck.html)：回答几十道是否题，看看书里哪些事你还没做到、先做哪几件
+
+</td></tr>
+<tr><td align="right"><b>问 AI</b></td><td align="left">
+
+[网页版问答](https://eternity4719.github.io/HowToLiveBetter/ask.html)：自己填 DeepSeek、OpenAI 等 API Key，先查书里的条目再整理成回答，注明第几节第几条；结论下附依据速览，可点开整条原文；不填 Key 也能用检索模式
 
 </td></tr>
 <tr><td align="right"><b>长文</b></td><td align="left">
@@ -112,7 +119,7 @@ AI 助手 skill 支持 Claude Code 和 Codex。装上后直接问「替朋友担
 ## 怎么读
 
 - **不用全做**：这是一份备选单，不是任务清单。挑走一两条就算数，剩下的放着，需要时再回来查。「说着容易做着难」这个评价是对的——作者自己也没做到其中大部分，写下来是为了要用的时候找得到。想挑省力的，看下面「只想看最值得做的」那条。
-- **想让 AI 帮你查**：仓库里带了一个中文 skill（[skills/life-decision-guide](skills/life-decision-guide/)），Claude Code 和 Codex 都能装。装上以后直接问「替朋友担保签不签」「每天通勤两小时值不值」。它会先把相关条目从正文里查出来，再照书里的算账方式排序回答，并注明出自第几节第几条。查不到就说查不到，不自己编数字。装法见 [那个目录的说明](skills/life-decision-guide/README.md)。
+- **想让 AI 帮你查**：打开[网页版问答](https://eternity4719.github.io/HowToLiveBetter/ask.html)，自己填 DeepSeek、OpenAI 之类的 API Key 就能问。它会先把相关条目从正文里查出来，再照书里的算账方式排序回答，并注明出自第几节第几条；查不到就说查不到，不自己编数字。不填 Key 也能用，只是列出相关条目。仓库里还带了一个中文 skill（[skills/life-decision-guide](skills/life-decision-guide/)），Claude Code 和 Codex 都能装，装法见 [那个目录的说明](skills/life-decision-guide/README.md)。
 - **想按条件挑**：打开[在线检索页](https://eternity4719.github.io/HowToLiveBetter/)，可以按关键词、章节、证据等级来筛，也可以按「花不花钱、花多少时间、要不要毅力」这三样筛，几个条件能叠着用。页面上的内容直接取自 book/ 目录里的正文，正文一改，页面跟着改。
 - **条目之间会互相指路**（「见第 8 节第 17 条」这种）：在检索页里，这种指路带一条虚线。点一下，就地显示被指的那条的标题和「说人话」。想真的翻过去，再按「跳过去」。那一条正好被筛选条件藏起来了，页面会自动把筛选清掉。在 GitHub 上直接读正文点不动，但每处指路后面都写着指向什么（「见第 18 条（借钱写清借条）」）。不翻过去也知道说的是哪条。
 - **想按顺序读**：每节内的先后顺序不代表性价比高低。条目多的节开头有一段分组导览，按主题挑着看就行。
@@ -140,7 +147,7 @@ AI 助手 skill 支持 Claude Code 和 Codex。装上后直接问「替朋友担
 
 ## 自己跑一份
 
-多数人用不着部署：[在线检索页](https://eternity4719.github.io/HowToLiveBetter/)是现成的，要离线就下[离线单文件 HTML](https://github.com/eternity4719/HowToLiveBetter/releases/download/epub-latest/HowToLiveBetter.html)，双击就开。
+多数人用不着部署：[在线检索页](https://eternity4719.github.io/HowToLiveBetter/)是现成的，要离线就下[离线单文件 HTML](https://github.com/eternity4719/HowToLiveBetter/releases/download/epub-latest/HowToLiveBetter.html)，双击就开。[网页版问答](https://eternity4719.github.io/HowToLiveBetter/ask.html)也是纯静态的：检索在浏览器里做，回答由你自己填的 API Key 直连服务商，没有后端，也没有内置 Key。配置、隐私和本地联调说明见 [ask/README.md](ask/README.md)。
 
 真要在自己电脑或服务器上跑：
 
@@ -308,7 +315,7 @@ A 级只说明「有具体数字、出处可核」，不说明这个数字一定
 
 本书在 Claude Code 协助下编写：查找原始文献、逐条核对数字与原文是否一致、维护交叉引用和构建脚本。选题、取舍和最终审定由作者负责，每条数字都能在来源栏的原文里找到。
 
-仓库根目录的 `index.html` 是在线检索页：按关键词、章节、证据等级和成本维度（花钱、花时间、要毅力）筛选条目，数据直接读本文件。在仓库设置里开启 GitHub Pages（Deploy from a branch，分支 main，目录 /）后即可访问。`tools/epub/` 是电子书生成脚本，在仓库根目录跑 `npm --prefix tools/epub ci && npm --prefix tools/epub run build` 在本地出一本 EPUB 到 `dist/`；GitHub Actions 在正文改动后自动跑同一个脚本并更新 Release。
+仓库根目录的 `index.html` 是在线检索页：按关键词、章节、证据等级和成本维度（花钱、花时间、要毅力）筛选条目，数据直接读本文件。`ask.html` 是网页版问答页，检索逻辑在 `ask/agent.js`，评测和本地冒烟脚本在 `tools/ask/`，改正文后不用重新建索引。在仓库设置里开启 GitHub Pages（Deploy from a branch，分支 main，目录 /）后即可访问。`tools/epub/` 是电子书生成脚本，在仓库根目录跑 `npm --prefix tools/epub ci && npm --prefix tools/epub run build` 在本地出一本 EPUB 到 `dist/`；GitHub Actions 在正文改动后自动跑同一个脚本并更新 Release。
 
 ## 正文
 
@@ -322,7 +329,7 @@ A 级只说明「有具体数字、出处可核」，不说明这个数字一定
 - 附上许可证链接 https://creativecommons.org/licenses/by/4.0/ 。
 - 改过内容的要写明改过。书里的法条、补贴标准和截止日期经常更新，建议同时写上你同步的是哪一天的版本。
 
-代码用 [MIT](LICENSE-CODE)，范围是 tools/、skills/、index.html 和 .github/。
+代码用 [MIT](LICENSE-CODE)，范围是 tools/、skills/、ask/、index.html、ask.html 和 .github/。
 
 ## Star 走势
 

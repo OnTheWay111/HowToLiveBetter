@@ -1,0 +1,583 @@
+[
+  {
+    "id": "in-book-h-pylori",
+    "type": "in_book",
+    "question": "体检查出幽门螺杆菌阳性，但我一点不舒服都没有，还需要吃药吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 1,
+        "n": 23
+      }
+    ],
+    "note": "第 1 节第 23 条：查幽门螺杆菌，阳性就根除"
+  },
+  {
+    "id": "in-book-quit-smoking-meds",
+    "type": "in_book",
+    "question": "烟龄十几年，靠毅力戒了好几次都没成，有没有什么办法能提高成功率？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 2,
+        "n": 3
+      },
+      {
+        "sec": 2,
+        "n": 5
+      }
+    ],
+    "note": "第 2 节第 3 条：戒烟别光靠忍，先去拿药：吃伐尼克兰的成功率能翻一倍多；第 2 节第 5 条：去戒烟门诊，或者打 12320 问当地有没有戒烟服务"
+  },
+  {
+    "id": "in-book-insomnia-cbt",
+    "type": "in_book",
+    "question": "失眠快一年了，一直靠安眠药，怕吃上瘾，有没有不吃药的办法？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 3,
+        "n": 26
+      }
+    ],
+    "note": "第 3 节第 26 条：长期失眠（一周三晚以上、拖了三个月以上）先做失眠的认知行为治疗，别一上来就长期吃安眠药"
+  },
+  {
+    "id": "in-book-habit-duration",
+    "type": "in_book",
+    "question": "我想养成每天早睡的习惯，是不是坚持三个星期就自动成自然了？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 4,
+        "n": 12
+      }
+    ],
+    "note": "第 4 节第 12 条：新习惯按月算，不要按「21 天」算"
+  },
+  {
+    "id": "in-book-emergency-fund",
+    "type": "in_book",
+    "question": "我每个月工资刚够花，想先存一笔应急的钱，大概要攒多少才够？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 5,
+        "n": 27
+      }
+    ],
+    "note": "第 5 节第 27 条：先存出 3 到 6 个月生活费的应急金，放在随时能取的地方"
+  },
+  {
+    "id": "in-book-unsafe-food-compensation",
+    "type": "in_book",
+    "question": "买到发霉的零食，商家只肯退钱，我能多要点赔偿吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 5,
+        "n": 31
+      }
+    ],
+    "note": "第 5 节第 31 条：买到不安全的食品，除了退钱还能要十倍价款，增加赔偿不足一千元的按一千元算"
+  },
+  {
+    "id": "in-book-annual-checkup",
+    "type": "in_book",
+    "question": "公司每年发的体检套餐挺全的，做这个是不是就能防大病了？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 6,
+        "n": 18
+      }
+    ],
+    "note": "第 6 节第 18 条：不要靠通用体检套餐防病，按年龄性别做那几项有证据的筛查"
+  },
+  {
+    "id": "in-book-contractor-wages",
+    "type": "in_book",
+    "question": "在工地干了大半年，包工头一直拖着工钱不给，我该找谁要？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 7,
+        "n": 22
+      },
+      {
+        "sec": 7,
+        "n": 2
+      }
+    ],
+    "note": "第 7 节第 22 条：被欠了工钱，先分清雇你的是谁：没执照的作坊和包工头照样找劳动监察，给家庭或个人干私活才去法院；第 7 节第 2 条：被欠薪先投诉劳动监察，再申请劳动仲裁，两条路都不收费，多数案子几个月内有结果"
+  },
+  {
+    "id": "in-book-fraud-freeze",
+    "type": "in_book",
+    "question": "刚被骗子忽悠着转了几万块，听说马上止付还有机会拦下来，该找谁？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 8,
+        "n": 2
+      }
+    ],
+    "note": "第 8 节第 2 条：发现被骗，立刻打 110 或 96110 要求止付，别先自己查"
+  },
+  {
+    "id": "in-book-piracy-sharing",
+    "type": "in_book",
+    "question": "我平时在网盘里分享一些日剧和美剧给朋友看，不收费，这样也会违法吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 9,
+        "n": 24
+      }
+    ],
+    "note": "第 9 节第 24 条：汉化漫画、搬运影视剧、分享网盘资源和盗版电子书，不收钱也是侵权；挂广告、收会员费就可能判刑"
+  },
+  {
+    "id": "in-book-self-defense-tools",
+    "type": "in_book",
+    "question": "晚上一个人回家有点怕，想买根甩棍或者防狼喷雾放包里，可以吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 9,
+        "n": 26
+      }
+    ],
+    "note": "第 9 节第 26 条：别为了防身买甩棍、电击器、匕首、辣椒水带在身上，放在车里也算携带"
+  },
+  {
+    "id": "in-book-premarital-check",
+    "type": "in_book",
+    "question": "准备领证了，婚前检查有必要做吗？不查行不行？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 10,
+        "n": 14
+      }
+    ],
+    "note": "第 10 节第 14 条：婚前做一次婚检，有重大疾病必须在登记前如实告诉对方"
+  },
+  {
+    "id": "in-book-wedding-no-cert",
+    "type": "in_book",
+    "question": "我们老家摆了酒席、亲戚都认了，就是还没去民政局，这样算结婚了吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 10,
+        "n": 21
+      }
+    ],
+    "note": "第 10 节第 21 条：办了婚礼、摆了酒席，也要去领结婚证：没登记的在法律上不算夫妻，对方去世你没有配偶的继承权"
+  },
+  {
+    "id": "in-book-rent-deposit",
+    "type": "in_book",
+    "question": "第一次租房签合同，押金这块要写清楚哪些东西，才不至于退房时扯皮？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 15,
+        "n": 1
+      }
+    ],
+    "note": "第 15 节第 1 条：租房时押金的数额、退还时间和扣减情形，必须写进合同"
+  },
+  {
+    "id": "in-book-diabetes-kidney",
+    "type": "in_book",
+    "question": "我有糖尿病，最近听说要查肾，多久查一次、查什么？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 16,
+        "n": 13
+      }
+    ],
+    "note": "第 16 节第 13 条：有糖尿病的（1 型从病程满 5 年起）每年查一次尿白蛋白肌酐比和血肌酐，有高血压的也要查，早点发现慢性肾病"
+  },
+  {
+    "id": "in-book-elderly-guardian",
+    "type": "in_book",
+    "question": "我爸身体还行，但我想提前安排，万一他以后糊涂了，谁替他签字做决定？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 17,
+        "n": 1
+      }
+    ],
+    "note": "第 17 节第 1 条：趁老人清醒，书面指定将来的监护人"
+  },
+  {
+    "id": "in-book-elderly-investment-scam",
+    "type": "in_book",
+    "question": "我妈被人拉去听讲座，说交十万块能住高档养老公寓，还返利息，这事靠谱吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 17,
+        "n": 5
+      }
+    ],
+    "note": "第 17 节第 5 条：凡是让老人先交钱的「投资养老」都别碰：办卡、买床位、买养老公寓、旅居养老、买老年产品是同一套非法集资"
+  },
+  {
+    "id": "in-book-layoff-resignation",
+    "type": "in_book",
+    "question": "公司要裁员，却让我自己写一份「因个人原因辞职」，说这样好聚好散，我还能拿到补偿吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 19,
+        "n": 7
+      },
+      {
+        "sec": 19,
+        "n": 4
+      }
+    ],
+    "note": "第 19 节第 7 条：不要签「个人原因主动辞职」，那一签就没有 N 了；第 19 节第 4 条：被裁先算清 N：每满一年一个月工资，不满六个月按半个月"
+  },
+  {
+    "id": "in-book-work-injury",
+    "type": "in_book",
+    "question": "上班的时候被机器伤了手，公司说私了给点钱，我要不要先去认定工伤？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 19,
+        "n": 11
+      }
+    ],
+    "note": "第 19 节第 11 条：上班受伤、上下班路上被撞，第一件事是做工伤认定，单位不报你自己报"
+  },
+  {
+    "id": "in-book-community-clinic-referral",
+    "type": "in_book",
+    "question": "感冒发烧想去大医院，朋友说先去社区医院看更划算，是真的吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 24,
+        "n": 1
+      },
+      {
+        "sec": 24,
+        "n": 3
+      }
+    ],
+    "note": "第 24 节第 1 条：常见病先在社区看，经基层逐级转诊上去，住院起付线接着算；第 24 节第 3 条：要去大医院，走基层转诊或者医院的转诊中心，别找号贩子"
+  },
+  {
+    "id": "in-book-dual-channel-meds",
+    "type": "in_book",
+    "question": "医生说要用的药医院里没货，让我自己去外面买，还能报销吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 24,
+        "n": 13
+      }
+    ],
+    "note": "第 24 节第 13 条：医院说国家医保谈判药没货、不进院的，让医生开处方，去医保「双通道」定点药店买，照样按规定报销"
+  },
+  {
+    "id": "in-book-folic-acid",
+    "type": "in_book",
+    "question": "打算明年要孩子，备孕的时候需要提前补点什么吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 27,
+        "n": 1
+      }
+    ],
+    "note": "第 27 节第 1 条：准备怀孕就开始每天补 0.4 毫克叶酸，一直吃到孕早期满 3 个月"
+  },
+  {
+    "id": "in-book-cat-during-pregnancy",
+    "type": "in_book",
+    "question": "刚怀孕，家里长辈非要把养了五年的猫送走，说会传染弓形虫，有必要吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 27,
+        "n": 17
+      }
+    ],
+    "note": "第 27 节第 17 条：怀孕了不用把猫送走，猫砂换别人每天铲，肉要做熟、碰土戴手套"
+  },
+  {
+    "id": "in-book-child-myopia-outdoor",
+    "type": "in_book",
+    "question": "孩子才上小学就近视了，听说多去外面玩能防近视，真的有用吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 30,
+        "n": 4
+      }
+    ],
+    "note": "第 30 节第 4 条：让孩子每天在户外待够 2 小时，这是目前不花钱、不用药的办法里，唯一有随机试验支持的防近视办法"
+  },
+  {
+    "id": "in-book-cold-medicine-overlap",
+    "type": "in_book",
+    "question": "感冒吃了两种药，看说明书发现它们有一样的成分，会不会重复了？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 34,
+        "n": 1
+      }
+    ],
+    "note": "第 34 节第 1 条：同时吃两种感冒药或止痛药之前，先看成分表，对乙酰氨基酚只能占一种，吃多了没不舒服也当天去医院"
+  },
+  {
+    "id": "in-book-commute-tradeoff",
+    "type": "in_book",
+    "question": "每天通勤两小时值不值？要不要搬到公司附近住？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 4,
+        "n": 18
+      }
+    ],
+    "note": "第 4 节第 18 条：选住处时把通勤时长放在前面，缩短单程通勤；单程少 30 分钟，一周省 5 小时。这题会走「先问后答」，补充情况后检索也要能把这条捞回来"
+  },
+  {
+    "id": "emergency-cardiac-arrest",
+    "type": "emergency",
+    "question": "路边有人突然倒下，叫他没反应，好像也没呼吸了，我该做什么？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 13,
+        "n": 1
+      }
+    ],
+    "note": "第 13 节第 1 条：有人倒地、叫不应、没正常呼吸，立刻用力按压胸口，让旁人打 120 并找 AED"
+  },
+  {
+    "id": "emergency-stroke",
+    "type": "emergency",
+    "question": "家里老人吃饭时突然嘴歪了，一只手拿不住筷子，说话也含糊，怎么办？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 13,
+        "n": 3
+      }
+    ],
+    "note": "第 13 节第 3 条：突然嘴歪、一侧胳膊没劲、说话说不清，立刻打 120，不要等、不要自己开车去"
+  },
+  {
+    "id": "emergency-drowning",
+    "type": "emergency",
+    "question": "在河边看见有人溺水了，我也不会游泳，该怎么救？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 13,
+        "n": 25
+      }
+    ],
+    "note": "第 13 节第 25 条：看到有人溺水，先叫人和打 110/120，伸竿、抛漂浮物，自己不下水"
+  },
+  {
+    "id": "emergency-choking",
+    "type": "emergency",
+    "question": "一起吃饭的朋友被一块肉卡住，说不出话，脸都憋红了，怎么弄？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 13,
+        "n": 26
+      }
+    ],
+    "note": "第 13 节第 26 条：有人噎住说不出话，1 岁以上的站到背后做 5 次拍背加 5 次腹部冲击，倒下就做心肺复苏"
+  },
+  {
+    "id": "suicide-ask-friend",
+    "type": "suicide",
+    "question": "好朋友最近情绪很不对，我怀疑他有过轻生的念头，该不该直接问他？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 1,
+        "n": 43
+      }
+    ],
+    "note": "第 1 节第 43 条：直接问身边情绪不对的人「你有没有想过自杀」，问了不会让他更想"
+  },
+  {
+    "id": "suicide-hotline",
+    "type": "suicide",
+    "question": "我最近情绪低到撑不下去，有时候真的不想活了，先打什么电话能有人陪我说说话？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 29,
+        "n": 11
+      },
+      {
+        "sec": 1,
+        "n": 25
+      }
+    ],
+    "note": "第 29 节第 11 条：要人陪着说话打 12356，未成年人和青少年打 12355，要看医生挂心理门诊；第 1 节第 25 条：抑郁或有自杀念头时打 12356，家里不囤安眠药和农药"
+  },
+  {
+    "id": "legal-police-summon",
+    "type": "legal",
+    "question": "警察打电话让我去派出所，说是传唤我配合调查，我到了之后第一步该干什么？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 8,
+        "n": 5
+      }
+    ],
+    "note": "第 8 节第 5 条：被指控或被传唤，先请律师，不私了、不删记录"
+  },
+  {
+    "id": "legal-cyberbullying",
+    "type": "legal",
+    "question": "在网上被人造谣、还有人私信骂我，我该怎么处理？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 8,
+        "n": 37
+      },
+      {
+        "sec": 8,
+        "n": 16
+      }
+    ],
+    "note": "第 8 节第 37 条：被网暴了：先开防护、先固证，再在平台、禁令、报警三条路里挑；第 8 节第 16 条：网上不骂人、不造谣、不转发没核实的事；被网暴先留证再报警"
+  },
+  {
+    "id": "legal-guarantor",
+    "type": "legal",
+    "question": "朋友去银行贷款，让我在担保人那里签字，说就是走个形式，万一他不还钱是不是得我来还？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 8,
+        "n": 18
+      }
+    ],
+    "note": "第 8 节第 18 条：借钱写清借条，替人担保前先想清楚自己愿不愿意替他还"
+  },
+  {
+    "id": "personalized-pregnancy-first-visit",
+    "type": "personalized",
+    "question": "我 32 岁，刚用验孕棒查出怀孕，后面的建档和产检该按什么时间安排？",
+    "profile": {
+      "who": [
+        "怀孕",
+        "女性"
+      ],
+      "money": "少",
+      "time": "少",
+      "will": "否",
+      "lens": [
+        "死亡率"
+      ]
+    },
+    "expect": [
+      {
+        "sec": 27,
+        "n": 2
+      },
+      {
+        "sec": 27,
+        "n": 3
+      }
+    ],
+    "note": "第 27 节第 2 条：孕 13 周前去社区卫生服务中心建《母子健康手册》，把免费产检额度用掉；第 27 节第 3 条：第一次产检就把艾滋病、梅毒、乙肝三项查掉，查出来艾滋病也有免费的阻断。两条都带「人群=怀孕」标签"
+  },
+  {
+    "id": "personalized-osteoporosis-screening",
+    "type": "personalized",
+    "question": "我妈 62 岁，绝经十多年了，平时身体没什么毛病，需要专门去查骨密度吗？",
+    "profile": {
+      "who": [
+        "老人",
+        "60岁",
+        "女性"
+      ],
+      "money": "少",
+      "time": "少",
+      "will": "否",
+      "lens": [
+        "死亡率"
+      ]
+    },
+    "expect": [
+      {
+        "sec": 1,
+        "n": 39
+      }
+    ],
+    "note": "第 1 节第 39 条：65 岁以上的女性去做一次双能 X 线骨密度检查，绝经后有骨质疏松危险因素的不用等到 65 岁。该条带「人群=女性+35岁,老人」标签，和 60 岁以上女性的 profile 匹配"
+  },
+  {
+    "id": "out-of-book-stock-pick",
+    "type": "out_of_book",
+    "question": "最近行情不错，你能不能直接告诉我买哪只股票？",
+    "profile": null,
+    "expect": [],
+    "note": "书里没写具体买哪只股票，也没有个股推荐或代码；第 5 节只写了不频繁交易、别把钱押在一只股票上、用宽基指数基金做长期底仓这类原则"
+  },
+  {
+    "id": "out-of-book-hospital-choice",
+    "type": "out_of_book",
+    "question": "我在成都，能不能推荐一下治胃病最好的医院是哪家？",
+    "profile": null,
+    "expect": [],
+    "note": "书里没写某城市哪家医院最好，也没有医院排名或就医推荐；第 24 节只写了分级就诊、转诊和异地就医的办法"
+  },
+  {
+    "id": "out-of-book-react-learning",
+    "type": "out_of_book",
+    "question": "我想学 React 写前端，书里有没有推荐的学习路线或课程？",
+    "profile": null,
+    "expect": [],
+    "note": "书里没写怎么学 React、前端技术栈或具体课程；第 23 节只讲学技能怎么挑、怎么少走弯路"
+  },
+  {
+    "id": "out-of-book-phone-recommendation",
+    "type": "out_of_book",
+    "question": "最近想换手机，预算四千左右，推荐一款吧。",
+    "profile": null,
+    "expect": [],
+    "note": "书里没写手机型号、选购推荐或数码产品测评"
+  },
+  {
+    "id": "partial-relocation-hainan",
+    "type": "partial",
+    "question": "夫妻都在北京互联网大厂工作，都超过 35 岁，想带两个孩子（5 岁和不到 1 岁）移民到海南澄迈老城镇，教育、气候、消费都不错，合适吗？",
+    "profile": null,
+    "expect": [
+      {
+        "sec": 19,
+        "n": 19
+      },
+      {
+        "sec": 24,
+        "n": 4
+      }
+    ],
+    "note": "书里没有当地学校/房价/岗位/气候数据，不能判断适不适合；但这题必须检索到「换城市工作时转移养老和医保关系」和「跨省异地就医」两条，不能只返回育儿补贴、个税、育儿假。"
+  }
+]
